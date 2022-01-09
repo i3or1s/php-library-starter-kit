@@ -25,6 +25,7 @@ namespace Ramsey\Dev\LibraryStarterKit\Task\Builder;
 use Ramsey\Dev\LibraryStarterKit\Task\Builder;
 use RuntimeException;
 
+use Symfony\Component\Finder\Finder;
 use function array_keys;
 use function array_values;
 use function preg_replace;
@@ -71,7 +72,7 @@ class UpdateReadme extends Builder
 
     private function getReadmeContents(): string
     {
-        $finder = $this->getEnvironment()->getFinder();
+        $finder = new Finder();
         $finder
             ->in($this->getEnvironment()->getAppPath())
             ->files()

@@ -25,6 +25,7 @@ namespace Ramsey\Dev\LibraryStarterKit\Task\Builder;
 use Ramsey\Dev\LibraryStarterKit\Task\Builder;
 use RuntimeException;
 
+use Symfony\Component\Finder\Finder;
 use function in_array;
 use function json_decode;
 use function json_encode;
@@ -116,7 +117,7 @@ class UpdateComposerJson extends Builder
 
     private function getComposerContents(): string
     {
-        $finder = $this->getEnvironment()->getFinder();
+        $finder = new Finder();
         $finder
             ->in($this->getEnvironment()->getAppPath())
             ->files()
